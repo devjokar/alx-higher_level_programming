@@ -1,22 +1,23 @@
 #!/usr/bin/python3
-""" Finds a peak inside a list """
+""" Define peak-finding module """
 
 
 def find_peak(list_of_integers):
+    """ Find a peak in an unordered list """
     if list_of_integers == []:
         return None
 
-    length = len(list_of_integers)
-    mid = int(length / 2)
+    size = len(list_of_integers)
+    mid = int(size / 2)
     li = list_of_integers
-    if mid - 1 < 0 and mid + 1 >= length:
+    if mid - 1 < 0 and mid + 1 >= size:
         return li[mid]
     elif mid - 1 < 0:
         return li[mid] if li[mid] > li[mid + 1] else li[mid + 1]
-    elif mid + 1 >= length:
+    elif mid + 1 >= size:
         return li[mid] if li[mid] > li[mid - 1] else li[mid - 1]
 
-    if li[mid - 1] < li[mid] > li[mid + 1]:
+    if li[mid] > li[mid - 1] and li[mid] > li[mid + 1]:
         return li[mid]
     if li[mid + 1] > li[mid - 1]:
         return find_peak(li[mid:])
